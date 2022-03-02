@@ -10,5 +10,5 @@ export type Link = {
 };
 
 export const state: State = {
-  currentPage: 'Splash',
+  currentPage: '',
 };

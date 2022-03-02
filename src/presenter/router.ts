@@ -8,9 +8,7 @@ export const initializeRouter = (context: Context) => {
     context.actions.displaySplash();
   });
 
-  page('/random', () => {
-    context.actions.displayRandomInfo();
-  });
+  page('/random', context.actions.displayRandomInfo);
 
   page('*', () => {
     window.document.querySelector('#app').innerHTML = 'Not found!';

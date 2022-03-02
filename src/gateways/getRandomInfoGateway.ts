@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 const baseUrl = 'https://swapi.dev/api/people';
-function randomNumber(min: number, max: number) {
+const randomNumber = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min) + min);
-}
+};
+
 const getRandomUrl = () => {
   const randomDigit = randomNumber(1, 70);
   const randomUrl = `${baseUrl}/${randomDigit}/`;
