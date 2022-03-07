@@ -35,7 +35,6 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     complexity: ['error', { max: 20 }],
     'jest/expect-expect': 'off',
-    'prettier/prettier': 'error',
     'max-lines': [
       'error',
       { max: 500, skipBlankLines: true, skipComments: true },
@@ -55,6 +54,7 @@ module.exports = {
     ],
     'no-shadow': ['error', { builtinGlobals: false }],
     'no-trailing-spaces': 'error',
+    'prettier/prettier': 'error',
     'sort-destructure-keys/sort-destructure-keys': [
       'error',
       { caseSensitive: false },
