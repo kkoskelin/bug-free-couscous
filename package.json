@@ -12,8 +12,7 @@
     "lint:fix": "npm run lint -- --fix",
     "start": "parcel",
     "open": "parcel --open",
-    "test": "jest --config jest.config.js src/",
-    "tsc": "tsc",
+    "test": "jest --config jest.config.js --collectCoverage true src/",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -41,6 +40,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.2",
+    "eslint-plugin-react-func": "^0.1.17",
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "eslint-plugin-sort-keys-fix": "^1.1.2",

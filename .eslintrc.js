@@ -27,6 +27,7 @@ module.exports = {
     'jest',
     'prettier',
     'react',
+    'react-func',
     'sort-destructure-keys',
     'sort-imports-es6-autofix',
     'sort-keys-fix',
@@ -38,10 +39,6 @@ module.exports = {
     'max-lines': [
       'error',
       { max: 500, skipBlankLines: true, skipComments: true },
-    ],
-    'max-lines-per-function': [
-      'error',
-      { max: 50, skipBlankLines: true, skipComments: true },
     ],
     'no-irregular-whitespace': ['error', { skipStrings: false }],
     'no-restricted-globals': [
@@ -55,6 +52,15 @@ module.exports = {
     'no-shadow': ['error', { builtinGlobals: false }],
     'no-trailing-spaces': 'error',
     'prettier/prettier': 'error',
+    'react-func/max-lines-per-function': [
+      'warn',
+      {
+        IIFEs: true,
+        max: 50,
+        skipBlankLines: true,
+        skipComments: true,
+      },
+    ],
     'sort-destructure-keys/sort-destructure-keys': [
       'error',
       { caseSensitive: false },
