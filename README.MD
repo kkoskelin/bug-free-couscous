@@ -19,3 +19,5 @@ For VSCode users:
 ## Application startup
     npm start
 
+## input validation
+    Zod - https://javascript.plainenglish.io/validating-input-with-zod-in-typescript-6d0e04677123
