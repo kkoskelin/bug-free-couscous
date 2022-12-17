@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { CurrentPage } from './components/CurrentPage';
 import { Provider } from 'overmind-react';
 import { overmindApp } from './presenter/presenter';
