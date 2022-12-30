@@ -113,7 +113,7 @@ module.exports = {
     ],
     'no-shadow': 'off',
     'no-trailing-spaces': 'error',
-    'no-warning-comments': 'error',
+    'no-warning-comments': 'warn',
     'prettier/prettier': 'error',
     'react-func/max-lines-per-function': [
       'warn',

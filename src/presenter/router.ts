@@ -4,11 +4,9 @@ import page from 'page';
 export const initializeRouter = (context: Context) => {
   page.base('');
 
-  page('/', () => {
-    context.actions.displaySplash();
+  page('/', async () => {
+    await context.actions.displayLocation();
   });
-
-  page('/random', context.actions.displayRandomInfo);
 
   page('*', () => {
     window.document.querySelector('#app').innerHTML = 'Not found!';

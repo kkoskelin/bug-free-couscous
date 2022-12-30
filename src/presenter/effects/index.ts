@@ -1,5 +1,5 @@
-import { getRandomInfo } from '../../gateways/getRandomInfoGateway';
+import { geolocation } from '../../gateways/geoLocationGateway';
 
 export const effects = {
-  getRandomInfo,
+  geolocation,
 };

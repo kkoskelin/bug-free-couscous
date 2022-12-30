@@ -1,5 +1,3 @@
-const colors = require('tailwindcss/colors');
-
 module.exports = {
   content: ['./src/**/*.{html,ts,jsx,tsx}'],
   mode: 'jit',
@@ -10,16 +8,23 @@ module.exports = {
   ],
   purge: ['./src/**/*.tsx'],
   theme: {
-    extend: {
-      colors: {
-        accent: colors.green,
-        primary: colors.gray,
-        secondary: colors.indigo,
-      },
-    },
     fontFamily: {
       sans: ['Helvetica', 'sans-serif'],
-      serif: ['Helvetica', 'serif'],
+      serif: ['Times New Roman', 'serif'],
+    },
+    fontSize: {
+      '2xl': '28px',
+      '3xl': '1.875rem',
+      '4xl': '40px',
+      '5xl': '3rem',
+      '6xl': '64px',
+      '7xl': '5rem',
+      base: '1rem',
+      lg: '1.125rem',
+      sm: '.875rem',
+      tiny: '.875rem',
+      xl: '24px',
+      xs: '.75rem',
     },
   },
   variants: {
