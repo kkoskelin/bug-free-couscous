@@ -5,15 +5,15 @@ import { UnitName, Units } from '../types/Units';
 import { derived } from 'overmind';
 import { isEmpty, memoize, round } from 'lodash';
 
-// Converts from degrees to radians.
-const toRadians = memoize((degrees: number) => {
-  return (degrees * Math.PI) / 180;
-});
-
-// Converts from radians to degrees.
-const toDegrees = memoize((radians: number) => {
-  return (radians * 180) / Math.PI;
-});
+const MathMemo = {
+  atan2: memoize(Math.atan2),
+  cos: memoize(Math.cos),
+  pow: memoize(Math.pow),
+  sin: memoize(Math.sin),
+  sqrt: memoize(Math.sqrt),
+  toDegrees: memoize((radians: number) => (radians * 180) / Math.PI),
+  toRadians: memoize((degrees: number) => (degrees * Math.PI) / 180),
+};
 
 const haversineDistance = (
   lon1: number,
@@ -23,31 +23,30 @@ const haversineDistance = (
   units: number,
 ) => {
   const R = units; // Radius of the earth in yards
-  const dLat = ((lat2 - lat1) * Math.PI) / 180; // Javascript functions in radians
-  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const dLat = MathMemo.toRadians(lat2) - MathMemo.toRadians(lat1);
+  const dLon = MathMemo.toRadians(lon2) - MathMemo.toRadians(lon1);
   const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos((lat1 * Math.PI) / 180) *
-      Math.cos((lat2 * Math.PI) / 180) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    MathMemo.pow(MathMemo.sin(dLat / 2), 2) +
+    MathMemo.cos(MathMemo.toRadians(lat1)) *
+      MathMemo.cos(MathMemo.toRadians(lat2)) *
+      MathMemo.pow(MathMemo.sin(dLon / 2), 2);
+  const c = 2 * MathMemo.atan2(Math.sqrt(a), MathMemo.sqrt(1 - a));
   const d = R * c;
   return d;
 };
 
 const jsBearing = (lon1: number, lat1: number, lon2: number, lat2: number) => {
-  lat1 = toRadians(lat1);
-  lon1 = toRadians(lon1);
-  lat2 = toRadians(lat2);
-  lon2 = toRadians(lon2);
+  lat1 = MathMemo.toRadians(lat1);
+  lon1 = MathMemo.toRadians(lon1);
+  lat2 = MathMemo.toRadians(lat2);
+  lon2 = MathMemo.toRadians(lon2);
 
-  const y = Math.sin(lon2 - lon1) * Math.cos(lat2);
+  const y = MathMemo.sin(lon2 - lon1) * MathMemo.cos(lat2);
   const x =
-    Math.cos(lat1) * Math.sin(lat2) -
-    Math.sin(lat1) * Math.cos(lat2) * Math.cos(lon2 - lon1);
-  let brng = Math.atan2(y, x);
-  brng = toDegrees(brng);
+    MathMemo.cos(lat1) * MathMemo.sin(lat2) -
+    MathMemo.sin(lat1) * MathMemo.cos(lat2) * MathMemo.cos(lon2 - lon1);
+  let brng = MathMemo.atan2(y, x);
+  brng = MathMemo.toDegrees(brng);
   return (brng + 360) % 360;
 };
 
@@ -77,22 +76,21 @@ export const computeBearing = (from: Coordinates, to: Coordinates): number => {
 };
 
 export const surroundings = (state: State): PinNearMe[] => {
-  return [];
-  // const { currentLocation, pins, units } = state;
-  // const hasLocation =
-  //   !isNaN(currentLocation?.latitude) && !isNaN(currentLocation?.longitude);
+  const { currentLocation, pins, units } = state;
+  const hasLocation =
+    !isNaN(currentLocation?.latitude) && !isNaN(currentLocation?.longitude);
 
-  // if (!hasLocation || isEmpty(pins)) {
-  //   return [];
-  // }
+  if (!hasLocation || isEmpty(pins)) {
+    return [];
+  }
 
-  // const distanceAndBearing: PinNearMe[] = pins.map(pin => ({
-  //   ...pin,
-  //   bearing: computeBearing(currentLocation, pin),
-  //   distance: computeDistance(currentLocation, pin, units),
-  // }));
+  const distanceAndBearing: PinNearMe[] = pins.map(pin => ({
+    ...pin,
+    bearing: computeBearing(currentLocation, pin),
+    distance: computeDistance(currentLocation, pin, units),
+  }));
 
-  // return distanceAndBearing;
+  return distanceAndBearing;
 };
 
 export const locationString = (state: State): string => {

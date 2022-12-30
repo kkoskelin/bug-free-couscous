@@ -23,11 +23,8 @@ const PinDetails = (props: PinProps) => {
     </div>
   );
 };
-export const CurrentLocation = () => {
-  return <p>Hi</p>;
-};
 
-export const XCurrentLocation = () => {
+export const CurrentLocation = () => {
   const { locationString, surroundings, units } = useAppState();
   return (
     <div>

@@ -12,11 +12,6 @@ export const pins: Pin[] = [
     name: 'Southwest Property Corner',
   },
   {
-    latitude: 45.863276,
-    longitude: -89.225804,
-    name: 'Just north of me',
-  },
-  {
     latitude: 45.862572,
     longitude: -89.222911,
     name: 'Cabin',
