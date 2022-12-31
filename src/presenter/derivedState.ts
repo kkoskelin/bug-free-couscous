@@ -99,8 +99,17 @@ export const locationString = (state: State): string => {
   if (!state.currentLocation) {
     return;
   }
-  const { heading, latitude, longitude } = state.currentLocation;
-  const locationStr = JSON.stringify({ heading, latitude, longitude });
+  const { heading, latitude, longitude, timestamp } = state.currentLocation;
+  const locationStr = JSON.stringify(
+    {
+      heading: Math.round(heading),
+      latitude: latitude.toFixed(4),
+      longitude: longitude.toFixed(4),
+      timestamp: new Date(timestamp).toLocaleTimeString('en-US'),
+    },
+    null,
+    2,
+  );
   return locationStr;
 };
 

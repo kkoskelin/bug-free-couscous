@@ -1,8 +1,8 @@
 import { PinNearMe } from '../types/PinNearMe';
 import { UnitName } from '../types/Units';
-import { useAppState } from '../presenter/presenter';
+import { useActions, useAppState } from '../presenter/presenter';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
 interface PinProps {
   src: PinNearMe;
@@ -10,28 +10,56 @@ interface PinProps {
 }
 
 const PinDetails = (props: PinProps) => {
-  const { src, units } = props;
+  const { heading, src, units } = props;
   return (
-    <div className="border-top border-2 border-white">
+    <div className="border-left border-1 border-grey3 m-2 p-2">
       <strong>{src.name}</strong>
       <ul>
         <li>
           Distance: {src.distance} {units}
         </li>
-        <li>Bearing: {src.bearing}</li>
+        <li>
+          Bearing: {src.bearing}°{' '}
+          <span
+            className="inline-block"
+            style={{
+              transform: `rotate(${Math.round(src.bearing - heading)}deg)`,
+            }}
+          >
+            ↑
+          </span>
+        </li>
       </ul>
     </div>
   );
 };
 
 export const CurrentLocation = () => {
-  const { locationString, surroundings, units } = useAppState();
+  const {
+    currentLocation: { heading },
+    locationString,
+    surroundings,
+    units,
+  } = useAppState();
+  const { updateLocation } = useActions();
+  let timer: ReturnType<typeof setTimeout>;
+
+  useEffect(() => {
+    timer = setTimeout(updateLocation as () => void, 5000);
+    return () => clearTimeout(timer);
+  });
+
   return (
     <div>
-      {locationString}
+      <pre>{locationString}</pre>
       <ul>
         {surroundings.map((pin: PinNearMe) => (
-          <PinDetails src={pin} key={pin.name} units={units} />
+          <PinDetails
+            src={pin}
+            key={pin.name}
+            units={units}
+            heading={heading}
+          />
         ))}
       </ul>
     </div>

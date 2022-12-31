@@ -7,7 +7,7 @@
   "source": "src/index.html",
   "scripts": {
     "build": "parcel build",
-    "clean": "rm -rf ./dist ./.parcel-cache",
+    "clean": "rm -rf ./dist ./.parcel-cache ./coverage",
     "lint": "eslint  --ext .js,.jsx,.ts,.tsx src/",
     "lint:fix": "npm run lint -- --fix",
     "start": "parcel",

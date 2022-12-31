@@ -6,4 +6,20 @@
   body {
     @apply bg-black text-white;
   }
+
+  button {
+    @apply border-2 bg-grey2 border-white text-black m-2 p-1 rounded;
+  }
+
+  button:focus {
+    @apply outline-1 outline-grey3;
+  }
+
+  button:hover {
+    @apply bg-skyBlue;
+  }
+
+  button:active {
+    @apply border-skyBlue bg-white;
+  }
 }

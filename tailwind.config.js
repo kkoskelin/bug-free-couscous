@@ -8,6 +8,42 @@ module.exports = {
   ],
   purge: ['./src/**/*.tsx'],
   theme: {
+    colors: {
+      black: '#25282A',
+      brightBlue: '#0086BF',
+      cobalt: '#004C97',
+      darkOrange: '#CD7032',
+      fuchsia: '#FC81FF',
+      gray: {
+        500: '#F9F9F9', // for icons
+      },
+      grey1: '#EFEEFE',
+      grey2: '#C7C8C6',
+      grey3: '#898D8D',
+      grey4: '#54595B',
+      grey5: '#404040',
+      indigo: '#071D49',
+      mintGreen: {
+        300: '#c5ffee',
+        500: '#a1f2db',
+        700: '#8FD7C2',
+      },
+      orange: '#F27928',
+      orchid: '#D155D8',
+      paleOrange: '#F8C592',
+      pink: '#FFA5A5',
+      red: {
+        300: '#FFA5A5',
+        500: '#FF7575',
+        700: '#FF3838',
+      },
+      redOrange: '#F55D2D',
+      skyBlue: '#C2ECF7',
+      transparent: 'transparent',
+      trueBlack: '#000000',
+      white: '#F9F9F9',
+      yellow: '#F8E38B',
+    },
     fontFamily: {
       sans: ['Helvetica', 'sans-serif'],
       serif: ['Times New Roman', 'serif'],
