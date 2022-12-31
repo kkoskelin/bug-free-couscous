@@ -8,6 +8,7 @@ export type State = {
   currentLocation?: Position;
   locationString?: string;
   pins?: Pin[];
+  error?: string;
   surroundings?: PinNearMe[];
   units: UnitName;
 };

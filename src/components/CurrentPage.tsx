@@ -4,9 +4,14 @@ import { useAppState } from '../presenter/presenter';
 import React from 'react';
 
 export const CurrentPage = () => {
-  const { currentPage } = useAppState();
+  const { currentPage, error } = useAppState();
   return (
     <>
+      {error && (
+        <p>
+          <strong>{error}</strong>
+        </p>
+      )}
       {currentPage == 'Location' && <CurrentLocation />}
       {currentPage == 'Loading' && <LoadingTemplate />}
     </>
