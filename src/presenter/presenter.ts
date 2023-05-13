@@ -1,8 +1,11 @@
 import { IContext, createOvermind } from 'overmind';
 import { actions } from './actions/';
-import { createActionsHook, createStateHook } from 'overmind-react';
+import {
+  createActionsHook,
+  createEffectsHook,
+  createStateHook,
+} from 'overmind-react';
 import { effects } from './effects/';
-import { initializeRouter } from './router';
 import { state } from './state';
 
 const overmindConfig = {
@@ -18,8 +21,6 @@ export type Context = IContext<{
 }>;
 
 export const overmindApp = createOvermind(overmindConfig);
-
-initializeRouter(overmindApp);
-
 export const useAppState = createStateHook<Context>();
 export const useActions = createActionsHook<Context>();
+export const useEffects = createEffectsHook<Context>();

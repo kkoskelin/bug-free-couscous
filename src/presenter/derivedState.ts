@@ -6,6 +6,7 @@ import { derived } from 'overmind';
 import { isEmpty, memoize, round } from 'lodash';
 
 // TODO: try https://blog.mapbox.com/fast-geodesic-approximations-with-cheap-ruler-106f229ad016
+// https://github.com/mapbox/cheap-ruler
 
 const MathMemo = {
   atan2: memoize(Math.atan2),

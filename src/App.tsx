@@ -1,10 +1,12 @@
 import { CurrentPage } from './components/CurrentPage';
 import { Provider } from 'overmind-react';
+import { initializeRouter } from './presenter/router';
 import { overmindApp } from './presenter/presenter';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './styles.css';
+initializeRouter(overmindApp);
 
 ReactDOM.render(
   <React.StrictMode>

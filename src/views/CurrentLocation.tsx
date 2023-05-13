@@ -5,6 +5,7 @@ import { useActions, useAppState } from '../presenter/presenter';
 import React, { useEffect } from 'react';
 
 interface PinProps {
+  heading: number;
   src: PinNearMe;
   units: UnitName;
 }
