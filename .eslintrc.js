@@ -20,13 +20,6 @@ module.exports = {
       rules: { 'no-restricted-imports': 'off' },
     },
     {
-      files: ['src/stories/**/*'],
-      rules: {
-        '@typescript-eslint/no-unsafe-assignment': 'off',
-        '@typescript-eslint/no-unsafe-member-access': 'off',
-      },
-    },
-    {
       files: ['cypress/**/*', '*.test.ts'],
       rules: {
         'react-func/max-lines-per-function': 'off',
