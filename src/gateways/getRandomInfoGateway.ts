@@ -13,5 +13,5 @@ const getRandomUrl = () => {
 
 export const getRandomInfo = async (): Promise<Record<string, string>> => {
   const results = await axios.get(getRandomUrl());
-  return { ...results.data };
+  return { ...results.data } as Record<string, string>;
 };

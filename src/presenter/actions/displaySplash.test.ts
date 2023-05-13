@@ -3,10 +3,10 @@ import { overmindApp } from '../presenter';
 const { actions, state } = overmindApp;
 
 describe('displaySplash', () => {
-  it('sets current page to Splash from Loading page', async () => {
-    await actions.displayLoading();
+  it('sets current page to Splash from Loading page', () => {
+    actions.displayLoading();
     expect(state.currentPage).toBe('Loading');
-    await actions.displaySplash();
+    actions.displaySplash();
     expect(state.currentPage).toBe('Splash');
   });
 });

@@ -1,5 +1,5 @@
 import { Context } from '../presenter';
 
-export const displaySplash = async (context: Context) => {
+export const displaySplash = (context: Context) => {
   context.state.currentPage = 'Splash';
 };

@@ -3,9 +3,9 @@ import { overmindApp } from '../presenter';
 const { actions, state } = overmindApp;
 
 describe('displayLoading', () => {
-  it('sets current page to Loading page', async () => {
+  it('sets current page to Loading page', () => {
     expect(state.currentPage).not.toBe('Loading');
-    await actions.displayLoading();
+    actions.displayLoading();
     expect(state.currentPage).toBe('Loading');
   });
 });

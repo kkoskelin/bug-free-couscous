@@ -5,7 +5,7 @@ export const initializeRouter = (context: Context) => {
   page.base('');
 
   page('/', () => {
-    context.actions.displaySplash();
+    return context.actions.displaySplash();
   });
 
   page('/random', context.actions.displayRandomInfo);

@@ -1,7 +1,7 @@
-import React from 'react';
 import { CurrentPage } from './components/CurrentPage';
 import { Provider } from 'overmind-react';
 import { overmindApp } from './presenter/presenter';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './styles.css';
